@@ -1,0 +1,293 @@
+/*********************
+GENERAL STYLES
+*********************/
+body {
+  background: $gray-900;
+  color: $text-color;
+  font-family: $font;
+  font-size: 16px;
+  letter-spacing: 0.1rem;
+}
+
+/*********************
+LINK STYLES
+*********************/
+
+a, a:visited , a:not([href]):not([tabindex]) {
+  text-decoration: none;
+  cursor: pointer;
+  color: $blue;
+  line-height: 1em;
+  font-size: 1em;
+  outline: none;
+
+  /* on hover */
+  &:hover, &:focus {
+    color: $blue;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  /* on click */
+  &.active {
+    color: $blue;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  /* mobile tap color */
+  &:link {
+    /*
+    this highlights links on iPhones/iPads.
+    so it basically works like the :hover selector
+    for mobile devices.
+    */
+    color: $blue;
+  }
+}
+
+/******************************************************************
+H1, H2, H3, H4, H5 STYLES
+******************************************************************/
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
+  font-family: $font-bold;
+  letter-spacing: normal;
+  a {
+    text-decoration: none;
+  }
+}
+
+h1, .h1 {
+  font-size: 3rem;
+  margin: 0.3rem 0 0.3em 0;
+}
+
+h2, .h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+h3, .h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  &.big {
+    font-size: 1.5em;
+  }
+}
+
+h4, .h4 {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+p {
+  font-size: 1.1rem;
+  line-height: 1.8rem;
+  margin: 2rem 0;
+}
+
+.hide-mobile {
+  display: none !important;
+}
+
+.dark-blue {
+  color: $dark-blue;
+}
+.green {
+  color: $green;
+}
+.black {
+  color: $black;
+}
+.red {
+  color: $red;
+}
+.big {
+  font-size: 1.5em;
+}
+
+.strong {
+  font-weight: bold;
+}
+
+.center {
+  display: block;
+  text-align: center;
+}
+
+.fa-2{ font-size: 24px;}
+.fa-3{ font-size: 32px; }
+.fa-4{ font-size: 40px; }
+.fa-question-circle { cursor: pointer; }
+.fa-info-circle {
+  font-size: 1.2rem !important;
+}
+
+/*********************
+ANGULAR STYLES
+*********************/
+.ng-hide{display:none;}
+
+/*********************
+NAVIGATION STYLES
+*********************/
+.no-outline {
+  &:focus{ outline: none; }
+}
+
+button,
+a.button {
+    cursor: pointer;
+    color: $white;
+    border: none;
+    text-transform: capitalize;
+    background-color: $blue;
+    @include round-corners(20px);    
+    text-align:center;
+    padding: 0.6rem 3rem;
+    outline: none;
+    &:hover,
+    &.active {
+        background-color: $light-blue;
+        color:$white;
+    }  
+}
+a.button {
+  padding-top: 0.9rem !important; 
+  padding-bottom: 0.9rem !important;
+}
+
+button:disabled,
+button[disabled] {
+  opacity: 0.3;
+  cursor: none;
+}
+
+.dropdown-box {
+  padding: 5px 15px 5px 15px;
+  background-color: $body-background;
+  width: 100%;
+  display: inline-block;
+  cursor: pointer;
+  @include round-corners(6px);
+
+  a {
+    color: $gray;
+    text-transform: capitalize;
+    display: inline-block;
+  }
+  .arrowdown {
+    color: $gray;
+    display: inline-block;
+    border-right: 1px solid;
+    border-bottom: 1px solid;
+    width: 9px; 
+    height: 9px;
+    transform: rotate(45deg);   
+    position: absolute;
+    margin-top: 3px;
+    margin-left: 10px; 
+    cursor: pointer;
+  }
+
+  div.options {
+    position: absolute;
+    z-index: 9900;
+    width: auto;
+    margin-left: -15px;
+    display: block;
+    max-height: 0;
+    overflow: hidden;
+    @include round-corners(3px);
+    background-color: $body-background;
+    -webkit-transition: all .5s ease;
+       -moz-transition: all .5s ease;
+        -ms-transition: all .5s ease;
+         -o-transition: all .5s ease;
+            transition: all .5s ease;
+
+    &.show {
+      width: auto;
+      margin-left: -15px;
+      max-height: 10000px;
+      -webkit-transition: all .5s ease;
+         -moz-transition: all .5s ease;
+          -ms-transition: all .5s ease;
+           -o-transition: all .5s ease;
+              transition: all .5s ease;
+    }
+
+  }
+
+
+  ul {
+    text-transform: capitalize;
+    padding: 0 15px 10px 15px;
+    min-width: 177px;
+    margin-top: 10px;
+
+    li {
+      color: $gray;
+      padding: 8px 5px;
+      @include round-corners(3px);   
+      font-size: 0.8em;
+      &:hover {
+        color: $light-gray;
+        cursor: pointer;
+      }
+    }
+
+  }
+}
+
+ul.nav {
+  list-style: none;
+  display: flex;
+  li {
+    margin-right: 1rem;
+    a { text-decoration: none; }
+  }
+}
+
+.arrow {
+  position: absolute;
+  z-index: 100;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  right: auto;
+  margin-left: 5px;
+  margin-top: 6px;       
+  &.up {
+    border-bottom: 8px solid $white;
+  }
+  &.down {
+    border-top: 6px solid $white;
+  }
+}
+
+ul.tabs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+  border-bottom: 1px solid $border-gray;
+  li {
+    text-align: center;
+    padding: 0.7rem 1.5rem;
+    &:hover {
+      border-bottom: 3px solid $blue;
+      cursor: pointer;
+    }
+    &.active {
+      border-bottom: 3px solid $blue;
+      box-shadow: 0 10px 17px 0 $border-gray;
+      clip-path: polygon(-20% 0,120% 0,120% 100%,-20% 100%);
+      webkit-clip-path: polygon(-20% 0,120% 0,120% 100%,-20% 100%);
+    }
+  }
+}

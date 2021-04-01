@@ -1,0 +1,125 @@
+// normalize: http://necolas.github.io/normalize.css/
+@import "partials/normalize";
+
+// Sass variables
+@import "partials/variables";
+
+// Helpers
+@import "partials/helpers";
+
+// typography
+@import "partials/typography";
+
+// Sass functions
+@import "partials/functions";
+
+// import mixins
+@import "partials/mixins";
+
+// the grid
+@import "partials/grid";
+
+/*********************
+IMPORTING MODULES
+*********************/
+
+// Common elements
+@import "modules/common";
+
+// alert boxes
+@import "modules/alerts";
+
+// buttons
+@import "modules/buttons";
+
+// forms (inputs & labels)
+@import "modules/forms";
+
+// loader spinner
+@import "modules/loader";
+
+// charts
+@import "modules/charts";
+
+// events
+@import "modules/events";
+
+// overlay
+@import "modules/overlay";
+
+/*********************
+RESPONSIVE BREAKPOINTS
+*********************/
+
+// styles in base.scss
+@import "breakpoints/base";
+
+
+@media only screen and (min-width: 380px) {
+
+	// styles in 481up.scss
+	@import "breakpoints/380";
+
+} // end of media query
+
+@media only screen and (min-width: 480px) {
+
+	// styles in 481up.scss
+	@import "breakpoints/480";
+
+} // end of media query
+
+@media only screen and (min-width: 768px) {
+
+	// styles in 768up.scss
+	@import "breakpoints/768";
+
+} // end of media query
+
+
+@media only screen and (min-width: 1030px) {
+
+	// styles in 1030up.scss
+	@import "breakpoints/1030";
+
+} // end of media query
+
+@media only screen and (min-width: 1300px) {
+
+	// styles in 1300up.scss
+	@import "breakpoints/1300";
+
+} // end of media query
+
+@media only screen and (min-width: 1600px) {
+
+	// styles in 1600up.scss
+	@import "breakpoints/1600";
+
+} // end of media query
+
+/*********************
+RETINA (2x RESOLUTION DEVICES)
+*********************/
+// @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+//        only screen and (min--moz-device-pixel-ratio: 1.5),
+//        only screen and (min-device-pixel-ratio: 1.5) {
+
+// 	// styles in 2x.scss
+// 	@import "breakpoints/2x";
+
+// } // end of media query
+
+/*********************
+PRINT STYLESHEET
+*********************/
+@media print {
+
+	// styles in print.scss
+	@import "partials/print";
+
+}
+
+//font awsome
+
+@import "font-awsome.min.css";
