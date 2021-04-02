@@ -2,5 +2,12 @@
 Mobile
 ******************************************************************/
 #header {
+	padding: 0.4rem 1rem 0.2rem 1rem;
+	background-color: $red;
+}
 
+#body {
+	.body {
+		padding: 0 1rem;
+	}
 }
