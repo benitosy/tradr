@@ -1,6 +1,11 @@
 <h2>Home</h2>
 <p>The quick brown fox jumped over the lazy dog</p>
-<form id="ticker-search">
-	<input type="text" name="ticker-search" placeholder="Search Stocks" />
-	<button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+<form id="ticker-search" (ngSubmit)="doSearch()">
+	<input type="text" 
+				 name="ticker-search" 
+				 placeholder="{{text.stockSearchPlaceholder}}" 
+				 [formControl]="stockSearch"
+				 required
+	/>
+	<button type="submit" [disabled]="!stockSearch.valid"><i class="fa fa-search"></i></button>
 </form>

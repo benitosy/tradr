@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
+import { TEXT } from '../config';
+import { StockSearchResult } from '../models/stockSearchResult.model';
+import { StockSearchResultMulti } from '../models/stockSearchResultMulti.model';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +11,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+	text = TEXT;
+	stockSearch = new FormControl('');
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  doSearch() {
+  	console.log(this.stockSearch.value);
+  	console.log(this.stockSearch);
   }
 
 }
