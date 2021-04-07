@@ -3,25 +3,20 @@ export const TEXT = {//alphabetical order
   "title": "Tradr.",
 }
 
-export const CONSTANTS_INJECT = {
+export const CONFIGS = {
   prod: {
     'APP_MODE': 'PRODUCTION',
-    'API_URL': 'https:/tradr.ben-sy.com/',
-    'mockData': true,
-  },
-  stg: {
-    'APP_MODE': 'STG',
-    'API_URL': 'https:/tradr.ben-sy.com/',
-    'mockData': true,
+    'API_URL': 'https://sandbox.tradier.com/v1/',
+    'mockData': false,
   },  
   dev: {
     'APP_MODE': 'DEV',
-    'API_URL': 'https:/tradr.ben-sy.com/',
-    'mockData': true,
+    'API_URL': 'https://sandbox.tradier.com/v1/',
+    'mockData': false,
   },  
   localhost: {
     'APP_MODE': 'localhost',
-    'API_URL': '',
+    'API_URL': 'https://sandbox.tradier.com/v1/',
     'mockData': true,
   }
 }

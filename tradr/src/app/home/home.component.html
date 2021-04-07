@@ -9,3 +9,9 @@
 	/>
 	<button type="submit" [disabled]="!stockSearch.valid"><i class="fa fa-search"></i></button>
 </form>
+<div class="search-results" *ngIf="searchResults.quotes.quote && searchResults.quotes.quote.length > 0">
+	<button (click)="clearSearch()" title="Clear Stock Search">X</button>
+	<ng-container *ngFor="let q of searchResults.quotes.quote">
+		<app-stock-quote [quote]="q"></app-stock-quote>
+	</ng-container>
+</div>

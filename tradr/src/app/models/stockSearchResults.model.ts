@@ -1,5 +1,4 @@
-
-export class StockSearchResultMulti 
+export class StockSearchResults
 {
     "quotes":{
         "quote": Array<{
@@ -35,7 +34,7 @@ export class StockSearchResultMulti
 }
 
 
-export const STOCKSEARCHRESULTMULTIMOCK: StockSearchResultMulti = 
+export const STOCKSEARCHRESULTSMOCK: StockSearchResults = 
 {
     "quotes": {
         "quote": [
