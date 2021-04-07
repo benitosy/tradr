@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { CdkDragDrop, 
+				 moveItemInArray, 
+				 transferArrayItem } from '@angular/cdk/drag-drop';
 import { TEXT } from '../config';
 import { RestService } from '../rest.service'; 
+
 import { StockSearchResult } from '../models/stockSearchResult.model';
 import { StockSearchResults } from '../models/stockSearchResults.model';
 
@@ -57,4 +61,30 @@ export class HomeComponent implements OnInit {
   	}
   }
 
+
+ list1 = [
+    "item 1",
+    "item 2",
+    "item 3",
+    "item 4",
+    "item 5"
+ ];
+
+ list2 = [
+    "item 6",
+    "item 7",
+    "item 8",
+    "item 9",
+    "item 10"
+ ];
+
+ drop(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer !== event.container) {
+    transferArrayItem(event.previousContainer.data,event.container.data,
+    event.previousIndex, event.currentIndex)
+    } else {
+    moveItemInArray(this.list1, event.previousIndex, event.currentIndex);
+    }
+ }
+}
 }
