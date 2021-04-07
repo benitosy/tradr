@@ -15,14 +15,3 @@
 		<app-stock-quote [quote]="q"></app-stock-quote>
 	</ng-container>
 </div>
-
-<div class="col-md-6">
-    <div cdkDropList [cdkDropListData]="list2" [cdkDropListConnectedTo]="firstList" #secondList="cdkDropList" (cdkDropListDropped)="drop($event)">
-        <div *ngFor="let item of list2" class="pop" cdkDrag>{{item}}</div>
-    </div>
-</div>
-<div class="col-md-6">
-    <div cdkDropList [cdkDropListData]="list1" [cdkDropListConnectedTo]="secondList" #firstList="cdkDropList" (cdkDropListDropped)="drop($event)">
-        <div *ngFor="let item of list1" class="pop" cdkDrag>{{item}}</div>
-    </div>
-</div>

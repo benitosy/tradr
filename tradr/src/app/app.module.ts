@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
-import { DragDropModule} from '@angular/cdk/drag-drop';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,7 +24,6 @@ import { StockQuoteComponent } from './stock-quote/stock-quote.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]
