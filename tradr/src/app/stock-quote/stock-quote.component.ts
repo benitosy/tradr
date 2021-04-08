@@ -9,7 +9,7 @@ import { StockSearchResults } from '../models/stockSearchResults.model';
 
 export class StockQuoteComponent implements OnInit {
 	
-	@Input() quote: StockSearchResults = {"quotes": {"quote": []}};
+	@Input() quote: any = new StockSearchResults;
 
   constructor() { }
 
