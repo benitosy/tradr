@@ -1,4 +1,8 @@
-<div class="stock-quote">
+<div class="stock-quote move" *ngIf="move">
+	<h3>{{quote.symbol}}</h3>
+	<p class="desc">{{quote.description}}</p>
+</div>
+<div class="stock-quote" *ngIf="!move">
 	<h3>{{quote.symbol}}</h3>
 	<p class="desc">{{quote.description}}</p>
 </div>

@@ -10,11 +10,11 @@ import { StockSearchResults } from '../models/stockSearchResults.model';
 export class StockQuoteComponent implements OnInit {
 	
 	@Input() quote: any = new StockSearchResults;
+	@Input() move: boolean = false;
 
   constructor() { }
 
   ngOnInit() {
-  	console.log(this.quote)
   }
 
 }

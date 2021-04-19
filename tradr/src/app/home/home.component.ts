@@ -1,10 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { CdkDragDrop, 
+				 moveItemInArray, 
+				 transferArrayItem,
+				 copyArrayItem } from '@angular/cdk/drag-drop';
+
 import { TEXT } from '../config';
 import { RestService } from '../rest.service'; 
 
 import { StockSearchResult } from '../models/stockSearchResult.model';
 import { StockSearchResults } from '../models/stockSearchResults.model';
+import { MyStocks } from '../models/myStocks.model';
+import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-home',
@@ -13,14 +20,17 @@ import { StockSearchResults } from '../models/stockSearchResults.model';
 })
 export class HomeComponent implements OnInit {
 
-	text = TEXT;
+	myStocks: MyStocks = {"stocks": []};
 	stockSearch = new FormControl('');
 	searchResult: StockSearchResult;
 	searchResults: StockSearchResults = {"quotes": {"quote": []}};
+	text = TEXT;
+	users: User[] = [];
 
   constructor( private rest: RestService) { }
 
   ngOnInit() {
+
   }
 
   /**-
@@ -57,4 +67,32 @@ export class HomeComponent implements OnInit {
   		});
   	}
   }
+
+  /**
+  * Drop stock into porfolio.  Write to DB
+  *
+  * @param object e event object
+  */
+  dropInPortfolio(event: CdkDragDrop<string[]>) {
+console.log(event.previousContainer.data)  	
+    transferArrayItem(event.previousContainer.data,
+                      event.container.data,
+                      event.previousIndex,
+                      event.currentIndex);
+  }
+
+  /**
+  * Get Users
+  *
+  */
+  getUsers() {
+		this.rest.getUsers()
+		.subscribe( payloads => {
+			this.users = payloads;
+		}, error => {
+			console.error(error.message);
+      //this.displayFeedback.showFeedback(error.message, true, 30);  			
+		});
+  }
+
 }

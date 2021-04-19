@@ -17,6 +17,7 @@ export const CONFIGS = {
   localhost: {
     'APP_MODE': 'localhost',
     'API_URL': 'https://sandbox.tradier.com/v1/',
+    'MY_DATA_API_URL': 'https://tradr-dcc1.restdb.io/rest/',
     'mockData': true,
   }
 }

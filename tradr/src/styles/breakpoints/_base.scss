@@ -13,13 +13,29 @@ Mobile
 }
 
 .stock-quote {
+	background-color: $gray-900;
 	border: 2px solid $gray-700;
-	cursor: grab;
 	margin: 1rem 0;
 	max-width: 300px;
 	padding: 0 2rem 1rem 2rem;
-	&:hover { border-color: $gray-500; }
 	@include round-corners(8px);
 	h3 { margin-bottom: 0; }
 	p.desc { margin-top: 0; }
+	&.move { 
+		cursor: move; 
+		&:hover { border-color: $gray-500; }
+	}
+}
+
+.search-results {
+	margin-bottom: 5rem;
+}
+
+.my-portfolio {
+
+}
+
+.block-listing {
+	border-top: 1px solid $gray-700;
+	padding: 1rem 0;
 }
