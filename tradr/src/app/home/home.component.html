@@ -10,10 +10,12 @@
 		/>
 		<button type="submit" [disabled]="!stockSearch.valid"><i class="fa fa-search"></i></button>
 	</form>
-	<div class="search-results" *ngIf="searchResults.quotes.quote && searchResults.quotes.quote.length > 0">
+	<div class="search-results" id="search-result"
+			 [ngClass]="{'show': searchResults.quotes.quote && searchResults.quotes.quote.length > 0}">	
 		<button (click)="clearSearch()" title="Clear Stock Search">X</button>
 		<h3>Search Results</h3>
 		<div 
+			*ngIf="searchResults.quotes.quote && searchResults.quotes.quote.length > 0"
 			class="search-results-container block-listing" 
 			cdkDropList
 			[cdkDropListData]="searchResults.quotes.quote">
@@ -25,28 +27,34 @@
 		</div>
 	</div>
 
-	<div class="my-portfolio">
-		<h3>My Portfolio</h3>
-		<div class="block-listing">
-			<ng-container *ngIf="myStocks.stocks.length == 0">
-				<div 
-					cdkDropList
-					[cdkDropListData]="myStocks.stocks"
-					(cdkDropListDropped)="dropInPortfolio($event)">
-					<p>No stocks in this portfolio yet</p>
-				</div>
-			</ng-container>
-			<ng-container *ngIf="myStocks.stocks.length > 0">
-				<div 
-					cdkDropList
-					[cdkDropListData]="myStocks.stocks"
-					(cdkDropListDropped)="dropInPortfolio($event)">
-					<ng-container *ngFor="let q of myStocks.stocks">
-							<app-stock-quote [quote]="q"></app-stock-quote>
-					</ng-container>
-				</div>
-			</ng-container>
-		</div>
+	<div class="my-portfolio" *ngIf="portfolios.length > 0">
+		<mat-expansion-panel hideToggle>
+		  <mat-expansion-panel-header>
+		    <mat-panel-title>
+		      <h3>My Portfolio</h3>
+		    </mat-panel-title>
+		  </mat-expansion-panel-header>
+			<div class="block-listing">
+				<ng-container *ngIf="myStocks.stocks.length == 0">
+					<div 
+						cdkDropList
+						[cdkDropListData]="myStocks.stocks"
+						(cdkDropListDropped)="dropInPortfolio($event)">
+						<p>No stocks in this portfolio yet</p>
+					</div>
+				</ng-container>
+				<ng-container *ngIf="myStocks.stocks.length > 0">
+					<div 
+						cdkDropList
+						[cdkDropListData]="myStocks.stocks"
+						(cdkDropListDropped)="dropInPortfolio($event)">
+						<ng-container *ngFor="let q of myStocks.stocks">
+								<app-stock-quote [quote]="q"></app-stock-quote>
+						</ng-container>
+					</div>
+				</ng-container>
+			</div>
+		</mat-expansion-panel>
 	</div>
 </div>
 

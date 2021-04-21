@@ -29,6 +29,16 @@ Mobile
 
 .search-results {
 	margin-bottom: 5rem;
+	height: 0;
+	overflow: hidden;
+	opacity: 0;
+	will-change: height;
+	-webkit-transition: height 0.5s ease-in-out, opacity 0.5s linear;
+	   -moz-transition: height 0.5s ease-in-out, opacity 0.5s linear;
+	    -ms-transition: height 0.5s ease-in-out, opacity 0.5s linear;
+	     -o-transition: height 0.5s ease-in-out, opacity 0.5s linear;
+	        transition: height 0.5s ease-in-out, opacity 0.5s linear;
+	&.show { opacity: 1 }
 }
 
 .my-portfolio {

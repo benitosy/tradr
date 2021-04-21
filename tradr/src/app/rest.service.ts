@@ -7,7 +7,7 @@ import { CONFIGS } from './config'
 import { StockSearchResult, STOCKSEARCHRESULTMOCK } from './models/stockSearchResult.model';
 import { StockSearchResults, STOCKSEARCHRESULTSMOCK } from './models/stockSearchResults.model';
 import { MyStocks, MYSTOCKSMOCK } from './models/myStocks.model';
-import { User, USERMOCK } from './models/user.model';
+import { Portfolio, PORTFOLIOSMOCK } from './models/portfolio.model';
 
 @Injectable({
   providedIn: 'root'
@@ -72,17 +72,18 @@ export class RestService {
   }
 
   /**
-  * Get All Users 
+  * Get Portfolio
   *
   * @param searchString string stock search string
   * @return object observable payload data
   */
-  getUsers(): Observable<User[]> { 
+  getPortfolios(): Observable<Portfolio[]> { 
+
     if(this.config.mockData === true) {
-      console.log([USERMOCK])      
-      return of ([USERMOCK]);
+      console.log(PORTFOLIOSMOCK)      
+      return of (PORTFOLIOSMOCK);
     } else {
-      return this.http.get<User[]>(this.config.API_URL + 'tradr-users');
+      return this.http.get<Portfolio[]>(this.config.API_URL + 'portfolios');
     }
   }
 
