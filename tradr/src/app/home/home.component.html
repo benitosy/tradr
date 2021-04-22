@@ -27,35 +27,37 @@
 		</div>
 	</div>
 
-	<div class="my-portfolio" *ngIf="portfolios.length > 0">
-		<mat-expansion-panel hideToggle>
-		  <mat-expansion-panel-header>
-		    <mat-panel-title>
-		      <h3>My Portfolio</h3>
-		    </mat-panel-title>
-		  </mat-expansion-panel-header>
-			<div class="block-listing">
-				<ng-container *ngIf="myStocks.stocks.length == 0">
-					<div 
-						cdkDropList
-						[cdkDropListData]="myStocks.stocks"
-						(cdkDropListDropped)="dropInPortfolio($event)">
-						<p>No stocks in this portfolio yet</p>
-					</div>
-				</ng-container>
-				<ng-container *ngIf="myStocks.stocks.length > 0">
-					<div 
-						cdkDropList
-						[cdkDropListData]="myStocks.stocks"
-						(cdkDropListDropped)="dropInPortfolio($event)">
-						<ng-container *ngFor="let q of myStocks.stocks">
-								<app-stock-quote [quote]="q"></app-stock-quote>
-						</ng-container>
-					</div>
-				</ng-container>
-			</div>
-		</mat-expansion-panel>
-	</div>
+	<ng-container *ngIf="portfolios.length > 0">
+		<div class="my-portfolio" *ngFor="let portfolio of portfolios">
+			<mat-expansion-panel hideToggle>
+			  <mat-expansion-panel-header>
+			    <mat-panel-title>
+			      <h3>{{portfolio.name}}</h3>
+			    </mat-panel-title>
+			  </mat-expansion-panel-header>
+				<div class="block-listing">
+					<ng-container *ngIf="portfolio.stocks.length == 0">
+						<div 
+							cdkDropList
+							[cdkDropListData]="portfolio.stocks"
+							(cdkDropListDropped)="dropInPortfolio($event)">
+							<p>No stocks in this portfolio yet</p>
+						</div>
+					</ng-container>
+					<ng-container *ngIf="portfolio.stocks.length > 0">
+						<div 
+							cdkDropList
+							[cdkDropListData]="portfolio.stocks"
+							(cdkDropListDropped)="dropInPortfolio($event)">
+							<ng-container *ngFor="let q of portfolio.stocks">
+									<app-stock-quote [quote]="q"></app-stock-quote>
+							</ng-container>
+						</div>
+					</ng-container>
+				</div>
+			</mat-expansion-panel>
+		</div>
+	</ng-container>
 </div>
 
 

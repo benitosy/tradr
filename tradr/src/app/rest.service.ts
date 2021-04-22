@@ -6,7 +6,6 @@ import { CONFIGS } from './config'
 
 import { StockSearchResult, STOCKSEARCHRESULTMOCK } from './models/stockSearchResult.model';
 import { StockSearchResults, STOCKSEARCHRESULTSMOCK } from './models/stockSearchResults.model';
-import { MyStocks, MYSTOCKSMOCK } from './models/myStocks.model';
 import { Portfolio, PORTFOLIOSMOCK } from './models/portfolio.model';
 
 @Injectable({
@@ -24,21 +23,6 @@ export class RestService {
     } else {
       this.config = CONFIGS.prod;      
     }  	
-  }
-
-  /**
-  * Get My Stocks - Get saved stock tickers and 
-  *
-  * @param searchString string stock search string
-  * @return object observable payload data
-  */
-  getMyStocks(): Observable<MyStocks> { 
-    if(this.config.mockData === true) {
-      console.log(MYSTOCKSMOCK)      
-      return of (MYSTOCKSMOCK);
-    } else {
-      return this.http.get<any>(this.config.API_URL + 'markets/quotes');
-    }
   }
 
   /**

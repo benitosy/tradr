@@ -11,7 +11,6 @@ import { GlobalService } from '../global.service';
 
 import { StockSearchResult } from '../models/stockSearchResult.model';
 import { StockSearchResults } from '../models/stockSearchResults.model';
-import { MyStocks } from '../models/myStocks.model';
 import { Portfolio } from '../models/portfolio.model';
 
 @Component({
@@ -21,7 +20,6 @@ import { Portfolio } from '../models/portfolio.model';
 })
 export class HomeComponent implements OnInit {
 
-	myStocks: MyStocks = {"stocks": []};
 	stockSearch = new FormControl('');
 	searchResult: StockSearchResult;
 	searchResults: StockSearchResults = {"quotes": {"quote": []}};
@@ -110,11 +108,7 @@ console.log(event.previousContainer.data)
 
 		this.rest.getPortfolios()
 		.subscribe( payload => {
-			if(payload.length > 0) {
-				payload.forEach(portfolio => {
-console.log(portfolio)
-				});
-			}
+			p = payload;
 		}, error => {
 			console.error(error.message);
       //this.displayFeedback.showFeedback(error.message, true, 30);  			
