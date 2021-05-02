@@ -22,6 +22,15 @@ export class GlobalService {
 	}
 
 /**
+  * Determine if element is an array
+  *
+  * @param any e element to test
+  */
+	isArray(e: any) {
+		return Array.isArray(e);
+	}
+
+/**
   * Calculate and set element rendered height
   *
 	* Element must have an ID and following CSS
@@ -33,8 +42,12 @@ export class GlobalService {
   */
 	openExpand(e: string) {
 		let element = document.getElementById(e);
-  	setTimeout(()=>{
-      element.style.height = Array.prototype.reduce.call(element.childNodes, function(p, c) {return p + (c.offsetHeight || 0);}, 0) + 'px';
+  	setTimeout(() => {
+  		let h: number = 45;
+
+      h += Array.prototype.reduce.call(element.childNodes, function(p, c) {return p + (c.offsetHeight || 0);}, 0);
+      
+      element.style.height = h + 'px';
   	},100);
 	}
 

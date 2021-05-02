@@ -3,22 +3,22 @@ export const TEXT = {//alphabetical order
   "title": "Tradr.",
 }
 
-export const CONFIGS = {
+export const ENV_CONFIGS = {
   prod: {
     'APP_MODE': 'PRODUCTION',
+    'MY_DATA_API_URL': 'https://tradr-dcc1.restdb.io/rest/',
+    'MY_DATA_API_URL_KEY': '6087566d28bf9b609975a765',
     'API_URL': 'https://sandbox.tradier.com/v1/',
-    'mockData': false,
-  },  
-  dev: {
-    'APP_MODE': 'DEV',
-    'API_URL': 'https://sandbox.tradier.com/v1/',
+    'API_URL_KEY': 'KG2qMKIuqgCsYMOy1ph4r9TeH6aw',
     'mockData': false,
   },  
   localhost: {
     'APP_MODE': 'localhost',
-    'API_URL': 'https://sandbox.tradier.com/v1/',
     'MY_DATA_API_URL': 'https://tradr-dcc1.restdb.io/rest/',
-    'mockData': true,
+    'MY_DATA_API_URL_KEY': '6087566d28bf9b609975a765',
+    'API_URL': 'https://sandbox.tradier.com/v1/',
+    'API_URL_KEY': 'KG2qMKIuqgCsYMOy1ph4r9TeH6aw',
+    'mockData': false,
   }
 }
 

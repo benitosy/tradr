@@ -29,7 +29,8 @@ export class StockSearchResult
             "askexch": string,
             "ask_date": number,
             "root_symbols": string
-        }
+        },
+        "unmatched_symbols"?: { "symbol": any }
     }
 }
 
@@ -64,6 +65,7 @@ export const STOCKSEARCHRESULTMOCK: StockSearchResult =
             "askexch": "P",
             "ask_date": 1617227181000,
             "root_symbols": "AAPL"
-        }
+        },
+        "unmatched_symbols": { "symbol": "WYNN" }
     }
 }

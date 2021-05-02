@@ -1,8 +1,11 @@
-<div class="stock-quote move" *ngIf="move">
+<div class="stock-quote move" *ngIf="move"> <!-- move class enables drag capability -->
 	<h3>{{quote.symbol}}</h3>
 	<p class="desc">{{quote.description}}</p>
 </div>
 <div class="stock-quote" *ngIf="!move">
 	<h3>{{quote.symbol}}</h3>
 	<p class="desc">{{quote.description}}</p>
+	<div class="shares" *ngIf="quote.shares && quote.shares.length > 0">
+		SHARES
+	</div>
 </div>

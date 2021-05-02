@@ -20,17 +20,17 @@ import { Portfolio } from '../models/portfolio.model';
 })
 export class HomeComponent implements OnInit {
 
+	global = new GlobalService;
+	portfolios: Portfolio[] = [];
 	stockSearch = new FormControl('');
 	searchResult: StockSearchResult;
 	searchResults: StockSearchResults = {"quotes": {"quote": []}};
 	text = TEXT;
-	portfolios: Portfolio[] = [];
 
-  constructor( private rest: RestService,
-  						 private global: GlobalService) { }
+  constructor( private rest: RestService) { }
 
   ngOnInit() {
-  	this.portfolios = this.getPortfolios();
+  	this.loadPortfolios();
   }
 
   /**
@@ -51,37 +51,27 @@ export class HomeComponent implements OnInit {
   doSearch() {  	
   	this.searchResults = {"quotes": {"quote": []}};
 
-  	if(this.stockSearch.value.includes(',')) {
+		this.rest.getQuotes(this.stockSearch.value)
+		.subscribe( payload => {
 
-  		this.rest.getQuotes(this.stockSearch.value)
-  		.subscribe( payload => {
-
-  			if(this.searchResults.quotes.quote.length === 0)
-					this.global.openExpand("search-result");
-
-  			this.searchResults = payload;
-
-  		}, error => {
-  			console.error(error.message);
-        //this.displayFeedback.showFeedback(error.message, true, 30);  			
-  		});
-
-  	} else {
-  		
-  		this.rest.getQuote(this.stockSearch.value)
-  		.subscribe( payload => {
-
-  			if(this.searchResults.quotes.quote.length === 0)
-					this.global.openExpand("search-result");
-
+			// Check for multiple stock symbols in search result
+			if(Array.isArray(payload.quotes.quote)) {
+				this.searchResults = payload;	
+			} else if (payload.quotes.quote) {
   			this.searchResults.quotes.quote.push(payload.quotes.quote);
+			}
 
-  		}, error => {
-  			console.error(error.message);
-        //this.displayFeedback.showFeedback(error.message, true, 30);  			
-  		});
+			// feedback
+			if(payload.quotes.unmatched_symbols) {
+				this.searchResults.quotes.unmatched_symbols = payload.quotes.unmatched_symbols;
+			}
 
-  	}
+			this.global.openExpand("search-result");
+
+		}, error => {
+			console.error(error.message);
+      //this.displayFeedback.showFeedback(error.message, true, 30);  			
+		});
 		
   }
 
@@ -89,13 +79,25 @@ export class HomeComponent implements OnInit {
   * Drop stock into porfolio.  Write to DB
   *
   * @param object e event object
+  * @param string portfolioId Portfolio ID 
   */
-  dropInPortfolio(event: CdkDragDrop<string[]>) {
-console.log(event.previousContainer.data)  	
+  dropInPortfolio(event: CdkDragDrop<string[]>, portfolioId: string) {
+console.log("HERE")
+console.log(event.previousContainer.data[event.previousIndex]);
+    this.rest.insertStock(event.previousContainer.data[event.previousIndex], portfolioId)
+    .subscribe( () => {
+	    this.loadPortfolios();
+    })
+
     transferArrayItem(event.previousContainer.data,
                       event.container.data,
                       event.previousIndex,
                       event.currentIndex);
+
+    if(event.previousContainer.data.length == 0) {
+    	this.clearSearch();
+    }
+
   }
 
   /**
@@ -103,18 +105,16 @@ console.log(event.previousContainer.data)
   *
   * @return array p portfolios
   */
-  getPortfolios() {
-  	let p = [];
+  loadPortfolios() {
 
 		this.rest.getPortfolios()
 		.subscribe( payload => {
-			p = payload;
+			this.portfolios = payload;
 		}, error => {
 			console.error(error.message);
       //this.displayFeedback.showFeedback(error.message, true, 30);  			
 		});
 
-		return p;
   }
 
 }

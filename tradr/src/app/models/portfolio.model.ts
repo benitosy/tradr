@@ -3,19 +3,20 @@ export class Portfolio
   "_id": string;
   "_created": string;
   "name": string;
-  "stocks": Array<MyStocks>;
+  "myStocks": Array<Stocks>;
 }
 
-export class MyStocks
+export class Stocks
 {
 	"_id": string;
 	"_created": string;
   "symbol": string;
-  "shares": Array<MyShares>;
+  "description": string;
+  "shares": Array<Shares>;
   "notes": string;
 }
 
-export class MyShares
+export class Shares
 {
 	"_id": string;
 	"_created": string;
@@ -31,10 +32,11 @@ export const PORTFOLIOSMOCK: Portfolio[] =
     "_id": "607a12a23e28515100023e01",
    	"_created": "2020-01-02",
     "name": "Watching",
-    "stocks": [{
+    "myStocks": [{
     	"_id": "abc123",
     	"_created": "2020-01-02",
       "symbol": "CCL",
+      "description": "Carnival Corp",
       "shares": [{
     		"_id": "abc123",
         "_created": "2020-01-02",
@@ -48,6 +50,7 @@ export const PORTFOLIOSMOCK: Portfolio[] =
     	"_id": "abc123",
     	"_created": "2020-01-06",
       "symbol": "JETS",
+      "description": "U.S. Global Jets ETF",
       "shares": [{
     		"_id": "abc12366",
         "_created": "2020-01-07",
@@ -69,10 +72,11 @@ export const PORTFOLIOSMOCK: Portfolio[] =
       "_id": "607a12a23e28515100023e02",
 	   	"_created": "2020-01-02",
       "name": "Active",
-      "stocks": [{
+      "myStocks": [{
 	    	"_id": "abc123",
 	    	"_created": "2020-01-02",
 	      "symbol": "AAPL",
+        "description": "Apple Inc",
 	      "shares": [{
       		"_id": "abc1234",
           "_created": "2020-02-04",

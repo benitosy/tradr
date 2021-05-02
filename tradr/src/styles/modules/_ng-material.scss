@@ -22,8 +22,37 @@
 
 
 /* Expand */
+.mat-expansion-panel-header {
+	height: 4rem;
+	padding: 0 !important;
+}
 .mat-expansion-panel {
-	background: inherit;
+	background: transparent;
+	.hover-icon {
+		position: absolute;
+		margin-top: 0.3rem;
+	}
+	&:hover {
+		.hover-icon {
+		  animation-duration: 0.3s;
+		  animation-name: hover-icon-range-1;
+		  animation-iteration-count: infinite;
+		  animation-direction: alternate;	
+		}
+	}	
 	&:not([class*=mat-elevation-z]) { box-shadow: none; }
+	.mat-expansion-panel-header {
+		.mat-expanded { height: 4rem; }
+	}
 	.mat-expansion-panel-header-title { color: $text-color; }
+}
+
+@keyframes hover-icon-range-1 {
+  from {
+    margin-top: 0.3rem;
+  }
+
+  to {
+    margin-top: 0.7rem;
+  }
 }
